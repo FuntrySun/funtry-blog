@@ -41,32 +41,25 @@ export default defineConfig({
     //侧边栏
     sidebar: [
       {
-        text: '平台相关',
+        text: '博客相关',
         items: [
-          { text: '小蚁是？', link: '/pages/introduce' },
-          { text: '收费情况', link: '/pages/price' }
+          { text: '涵盖的内容', link: '/pages/introduce' },
+          { text: '我想表达...', link: '/pages/price' }
         ]
       },
       {
-        text:'服务与产品',
+        text:'前置知识-后端(Java)',
         link:'/pages/service',
         items:[
-          {text:'聚合支付',link:'/pages/pay'},
-          {text:'聚合转账',link:'/pages/transfer'},
-          {text:'聚合代付',link:'/pages/pay'}
+          {text:'Servlet',link:'/pages/pay'},
+          {text:'微服务',link:'/pages/transfer'},
+          {text:'OAuth2',link:'/pages/pay'},
+          {text:'单点登录',link:'/pages/transfer'},
+          {text:'',link:'/pages/pay'}
         ]
       },
       {
-        text:'收费标准及优惠政策',
-        link:'/pages/service',
-        items:[
-          {text:'商家端',link:'/pages/pay'},
-          {text:'企业端',link:'/pages/transfer'},
-          {text:'个人端',link:'/pages/pay'}
-        ]
-      },
-      {
-        text:'客户案例',
+        text:'前置知识-前端(Vue3)',
         link:'/pages/service',
         items:[
           {text:'商家端',link:'/pages/pay'},
@@ -75,7 +68,16 @@ export default defineConfig({
         ]
       },
       {
-        text:'安全与合规',
+        text:'SpringBoot3',
+        link:'/pages/service',
+        items:[
+          {text:'商家端',link:'/pages/pay'},
+          {text:'企业端',link:'/pages/transfer'},
+          {text:'个人端',link:'/pages/pay'}
+        ]
+      },
+      {
+        text:'SpringCloudAlibaba',
         link:'/pages/safe/safe',
         items:[
           {text:'商家端',link:'/pages/pay'},
