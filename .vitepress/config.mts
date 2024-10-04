@@ -5,16 +5,15 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/funtry-blog/',
-  title: "Funtry Blog 趣尝",
+  title: "Funtry Blog 趣·尝",
   description: "Funtry Blog 一个学习有趣尝试的开端的博客",
-  head: [
-    ['link',{rel:'icon',href:'/favicon.ico'}],
-    ['link',{ rel: 'preconnect', href: 'https://fonts.googleapis.com' }]
-  ],
+    head: [
+      ['link',{rel:'icon',href:'/favicon.ico'}],
+    ],
 
   themeConfig: {
     // logo
-    logo: "/ant.png",
+    logo: "/Eggs.svg",
     //导航栏
     nav: [
       { text: '主页', link: '/' },
