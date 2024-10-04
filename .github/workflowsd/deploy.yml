@@ -1,10 +1,10 @@
-# Sample workflow for building and deploying a VitePress site to GitHub Pages
+# 用于构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
 #
 name: Deploy VitePress site to Pages
 
 on:
-  # Runs on pushes targeting the `main` branch. Change this to `master` if you're
-  # using the `master` branch as the default branch.
+  # 针对 `main` 分支的推送上运行。
+  # 如果你使用 `master` 作为默认分支，请将其更改为 `master`
   push:
     branches: [main]
 
