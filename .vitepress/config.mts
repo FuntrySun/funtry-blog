@@ -5,8 +5,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/funtry-blog/',
-  title: "小蚁聚合支付平台",
-  description: "平台为打造一站式支付提供便宜",
+  title: "Funtry Blog",
+  description: "Funtry Blog 一个学习有趣尝试的开端博客",
   head: [
     ['link',{rel:'icon',href:'/favicon.ico'}],
     ['link',{ rel: 'preconnect', href: 'https://fonts.googleapis.com' }]
@@ -18,9 +18,19 @@ export default defineConfig({
     //导航栏
     nav: [
       { text: '主页', link: '/' },
-      { text: 'Api文档', link: '/markdown-examples' },
-      {text:'用户登录/注册',link:'/login'},
-      {text:'关于我们/联系',link:'/pages/about/about'}
+      { text: '前端', items: [
+          { text: 'pinia封装', link: '/pages/html' },
+          { text: 'TypeScript', link: '/pages/typescript' },
+          { text: 'Vue3.0', link: '/pages/vue3' },
+          { text: 'VitePress', link: '/pages/vitepress' }
+        ] },
+      {text:'后端',items:[
+          {text:'Java',link:'/pages/java'},
+          {text:'Spring',link:'/pages/spring'},
+          {text:'Spring Boot',link:'/pages/springboot'},
+          {text:'Mybatis',link:'/pages/mybatis'}
+        ]},
+      {text:'关于我/联系',link:'/pages/about/about'}
     ],
     //侧边栏
     sidebar: [
