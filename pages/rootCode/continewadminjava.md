@@ -2,6 +2,12 @@
 ::: info
 在此对Continew-admin的作者及其团队成员表达由衷的感谢！！！
 :::
+---
+::: tip
+文档内容较长，请耐心阅读。
+:::
+
+
 ## Continew-Admin-Common模块
 ### common/config/exception
 #### GlobalExceptionHandler.java——全局异常处理
