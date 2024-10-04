@@ -38,7 +38,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: pnpm # or pnpm / yarn
+      - name: Install pnpm
+        run: npm install -g pnpm # or npm install -g yarn / npm install -g bun
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Install dependencies
