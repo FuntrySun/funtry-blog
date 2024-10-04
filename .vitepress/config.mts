@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
  */
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/funtry-blog/',
   title: "小蚁聚合支付平台",
   description: "平台为打造一站式支付提供便宜",
   head: [
