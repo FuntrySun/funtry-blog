@@ -52,8 +52,17 @@ export default defineConfig({
         link:'/pages/service',
         items:[
           {text:'Servlet',link:'/pages/pay'},
-          {text:'微服务',link:'/pages/transfer'},
-          {text:'OAuth2',link:'/pages/pay'},
+          {text:'微服务',items:[
+              {text:'微服务',link:'/pages/pay'},
+              {text:'微服务',link:'/pages/transfer'},
+              {text:'微服务',link:'/pages/pay'}
+          ]},
+          {text:'分布式',items:[
+              {text:'分布式',link:'/pages/pay'},
+              {text:'分布式',link:'/pages/transfer'},
+              {text:'分布式',link:'/pages/pay'}
+          ]},
+          {text:'OAuth2',link:'/pages/frontKnowledge/backend/oauth2'},
           {text:'单点登录',link:'/pages/transfer'},
           {text:'',link:'/pages/pay'}
         ]
@@ -83,6 +92,32 @@ export default defineConfig({
           {text:'商家端',link:'/pages/pay'},
           {text:'企业端',link:'/pages/transfer'},
           {text:'个人端',link:'/pages/pay'}
+        ]
+      },
+      {
+        text:'前后端框架源码赏析',
+        link: '',
+        items:[
+          {text:'Continew-admin-java',collapsed: true,items:[
+            {text:'continew-admin-common',collapsed: true,items:[
+              {text:'common/config/exception异常处理',link:'/pages/rootCode/continewadminjava/common/exception'},
+              {text:'common/config/mybatis持久层配置',link:'/pages/rootCode/continewadminjava/common/mybatis'},
+              {text:'common/config/properties配置属性',link:'/pages/rootCode/continewadminjava/common/properties'},
+              {text:'common/constant缓存常量',link:'/pages/rootCode/continewadminjava/common/constant'},
+              {text:'common/enums枚举类',link:'/pages/rootCode/continewadminjava/common/enums'},
+              {text:'common/model/Dto',link:'/pages/rootCode/continewadminjava/common/modeldto'},
+              {text:'common/model/resp',link:'/pages/rootCode/continewadminjava/common/modelresp'},
+              {text:'common/util/helper',link:'/pages/rootCode/continewadminjava/common/utilhelper'},
+              {text:'common/util',link:'/pages/rootCode/continewadminjava/common/util'},
+            ]},
+            {text:'continew-admin-webapi',collapsed: true,items:[
+              {text:'/config/log',link:'/pages/rootCode/continewadminjava/system/log'},
+              {text:'/saToken',link:'/pages/rootCode/continewadminjava/system/satoken'},
+              {text:'/controller/auth',link:'/pages/rootCode/continewadminjava/system/controllerAuth'},
+              {text:'/controller/common',link:'/pages/rootCode/continewadminjava/system/controllerCommon'},
+              {text:'ContiNewAdminApplication.java——启动器',link:'/pages/rootCode/continewadminjava/system/contiNewAdminApplication'}
+            ]}
+          ]},
         ]
       }
     ],
