@@ -102,7 +102,7 @@ public class WebSocketClientServiceImpl implements WebSocketClientService {
     }
 }
 ```
-
+### 解析
 1. **@Component 注解**:
     - `@Component` 是 Spring 框架中的一个注解，用于标识该类是一个 Spring 组件，通过自动扫描进行管理。它表明 `WebSocketClientServiceImpl` 类是一个可被 Spring 容器实例化的 Bean。
 2. **类定义**:

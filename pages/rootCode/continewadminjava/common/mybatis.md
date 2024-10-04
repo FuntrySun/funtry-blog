@@ -23,7 +23,7 @@ public class BCryptEncryptor implements IEncryptor {
     }
 }
 ```
-
+## 解析
 1. **类定义**
 
 ```java
@@ -94,7 +94,7 @@ public interface DataPermissionMapper<T> extends BaseMapper<T> {
     List<T> selectList(IPage<T> page, @Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
 }
 ```
-
+## 解析
 1. **接口声明**：
 
 ```java
@@ -150,7 +150,7 @@ public class DefaultDataPermissionUserContextProvider implements DataPermissionU
     }
 }
 ```
-
+## 解析
 1. **类声明和接口实现**
 
 ```java
@@ -309,7 +309,7 @@ public class MybatisPlusConfiguration {
     }
 }
 ```
-
+## 解析
 1. **@Configuration**  
 这是一个 Spring 框架的注解，表示该类是一个配置类，Spring 会在启动时自动识别并处理该类，以便在应用上下文中注册相应的 Bean。
 2. **public class MybatisPlusConfiguration**  
@@ -329,7 +329,7 @@ public class MybatisPlusConfiguration {
 9. **return new BCryptEncryptor(passwordEncoder);**  
 返回一个 `BCryptEncryptor` 的新实例，并将传入的 `PasswordEncoder` 作为参数，负责密码的加密和解密处理。
 
-#### MyBatisPlusMetaObjectHandler.java——MyBatis Plus 元对象处理器配置（插入或修改时自动填充）
+## MyBatisPlusMetaObjectHandler.java——MyBatis Plus 元对象处理器配置（插入或修改时自动填充）
 ```java
 public class MyBatisPlusMetaObjectHandler implements MetaObjectHandler {
 
@@ -421,7 +421,7 @@ public class MyBatisPlusMetaObjectHandler implements MetaObjectHandler {
     }
 }
 ```
-
+## 解析
 1. **类定义与接口实现**
 
 ```java
