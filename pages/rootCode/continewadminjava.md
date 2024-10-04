@@ -9,8 +9,8 @@
 
 
 ## Continew-Admin-Common模块
-### common/config/exception
-#### GlobalExceptionHandler.java——全局异常处理
+  ### common/config/exception
+  #### GlobalExceptionHandler.java——全局异常处理
 ```java
 @Slf4j
 @Order(99)
@@ -85,11 +85,9 @@ public R handleBusinessException(BusinessException e, HttpServletRequest request
     return R.fail(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()), e.getMessage());
 }
 ```
-::: details
 * 捕捉 `BusinessException`，记录错误信息，并返回包含错误信息的响应。
+  
     - **错误请求处理**：
-:::
-
     
 ```java
 @ExceptionHandler(BadRequestException.class)
