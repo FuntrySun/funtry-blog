@@ -1,6 +1,6 @@
 steps:
   - uses: actions/setup-node@v3
     with:
-      node-version: '20' # 设置你需要的Node.js版本
+      node-version: '16' # 设置你需要的Node.js版本
       cache: 'pnpm'
   - run: npm install -g pnpm
