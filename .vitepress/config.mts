@@ -5,8 +5,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/funtry-blog/',
-  title: "Funtry Blog",
-  description: "Funtry Blog 一个学习有趣尝试的开端博客",
+  title: "Funtry Blog 趣尝",
+  description: "Funtry Blog 一个学习有趣尝试的开端的博客",
   head: [
     ['link',{rel:'icon',href:'/favicon.ico'}],
     ['link',{ rel: 'preconnect', href: 'https://fonts.googleapis.com' }]
@@ -30,6 +30,13 @@ export default defineConfig({
           {text:'Spring Boot',link:'/pages/springboot'},
           {text:'Mybatis',link:'/pages/mybatis'}
         ]},
+      {text:'框架源码赏析',items:[
+          {text:'Continew-admin-java',link:'/pages/rootCode/continewadminjava'},
+          {text:'Continew-admin-ui',link:'/pages/springcloudalibaba'},
+          {text:'SpringCloud Gateway',link:'/pages/springcloudgateway'},
+          {text:'SpringCloud Sleuth',link:'/pages/springcloudsleuth'},
+          {text:'SpringCloud Zuul',link:'/pages/springcloudzuul'},
+      ]},
       {text:'关于我/联系',link:'/pages/about/about'}
     ],
     //侧边栏
