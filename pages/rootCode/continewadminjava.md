@@ -85,10 +85,12 @@ public R handleBusinessException(BusinessException e, HttpServletRequest request
     return R.fail(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()), e.getMessage());
 }
 ```
-
-        * 捕捉 `BusinessException`，记录错误信息，并返回包含错误信息的响应。
+::: details
+* 捕捉 `BusinessException`，记录错误信息，并返回包含错误信息的响应。
     - **错误请求处理**：
+:::
 
+    
 ```java
 @ExceptionHandler(BadRequestException.class)
 public R handleBadRequestException(BadRequestException e, HttpServletRequest request) {
@@ -97,7 +99,7 @@ public R handleBadRequestException(BadRequestException e, HttpServletRequest req
 }
 ```
 
-        * 捕捉 `BadRequestException`，记录错误信息，并返回400错误响应。
+* 捕捉 `BadRequestException`，记录错误信息，并返回400错误响应。
     - **文件上传大小限制处理**：
 
 ```java
@@ -111,7 +113,7 @@ public R handleRequestTooBigException(MultipartException e, HttpServletRequest r
 }
 ```
 
-        * 捕捉 `MultipartException`，即文件上传时超过大小限制。通过分析异常信息构建友好的提示信息，然后返回400错误响应，提示用户“请上传小于XXKB的文件”。
+* 捕捉 `MultipartException`，即文件上传时超过大小限制。通过分析异常信息构建友好的提示信息，然后返回400错误响应，提示用户“请上传小于XXKB的文件”。
 
 #### GlobalSaTokenExceptionHandler.java——satoken全局异常处理
 ```java
@@ -165,13 +167,12 @@ public class GlobalSaTokenExceptionHandler {
 @Order(99)
 @RestControllerAdvice
 ```
-
-    - `@Slf4j`用于日志记录。
-    - `@Order(99)`定义了异常处理器的优先级，值越小优先级越高。
-    - `@RestControllerAdvice`是一个组合注解，表示该类是一个控制器增强（Advice），可以用来捕获和处理控制器抛出的异常。
+- `@Slf4j`用于日志记录。
+- `@Order(99)`定义了异常处理器的优先级，值越小优先级越高。
+- `@RestControllerAdvice`是一个组合注解，表示该类是一个控制器增强（Advice），可以用来捕获和处理控制器抛出的异常。
 2. **日志和异常处理方法**:
-    - 每个方法均使用`@ExceptionHandler`注解来处理特定类型的异常。
-    - 例如，对`NotLoginException`的处理方法如下：
+- 每个方法均使用`@ExceptionHandler`注解来处理特定类型的异常。
+- 例如，对`NotLoginException`的处理方法如下：
 
 ```java
 @ExceptionHandler(NotLoginException.class)
@@ -181,7 +182,7 @@ public R handleNotLoginException(NotLoginException e, HttpServletRequest request
 }
 ```
 
-    - `handleNotLoginException`方法会在捕获到`NotLoginException`时被调用。
+- `handleNotLoginException`方法会在捕获到`NotLoginException`时被调用。
 3. **异常处理逻辑**:
     - 在`handleNotLoginException`方法中，
         * 使用`log.error`记录请求的方法（如GET、POST）和请求路径（URI）以及异常信息。
@@ -262,14 +263,14 @@ public class BCryptEncryptor implements IEncryptor {
 public class BCryptEncryptor implements IEncryptor {
 ```
 
-    - 定义了 `BCryptEncryptor` 类，并实现了 `IEncryptor` 接口，表示这个类需要实现接口中定义的方法。
+- 定义了 `BCryptEncryptor` 类，并实现了 `IEncryptor` 接口，表示这个类需要实现接口中定义的方法。
 2. **成员变量**
 
 ```java
 private final PasswordEncoder passwordEncoder;
 ```
 
-    - 定义了一个 `passwordEncoder` 变量，用于执行实际的加密操作，该变量在实例化时被初始化。
+- 定义了一个 `passwordEncoder` 变量，用于执行实际的加密操作，该变量在实例化时被初始化。
 3. **构造函数**
 
 ```java
@@ -278,7 +279,7 @@ public BCryptEncryptor(PasswordEncoder passwordEncoder) {
 }
 ```
 
-    - 构造函数接收一个 `PasswordEncoder` 的实例并初始化 `passwordEncoder`。这允许外部在创建 `BCryptEncryptor` 对象时提供具体的加密实现。
+- 构造函数接收一个 `PasswordEncoder` 的实例并初始化 `passwordEncoder`。这允许外部在创建 `BCryptEncryptor` 对象时提供具体的加密实现。
 4. **加密方法**
 
 ```java
@@ -288,7 +289,7 @@ public String encrypt(String plaintext, String password, String publicKey) throw
 }
 ```
 
-    - 此方法实现了 `IEncryptor` 接口中的加密功能。它接收明文字符串 `plaintext`，并使用 `passwordEncoder` 来进行加密操作。此方法返回加密后的字符串。
+- 此方法实现了 `IEncryptor` 接口中的加密功能。它接收明文字符串 `plaintext`，并使用 `passwordEncoder` 来进行加密操作。此方法返回加密后的字符串。
 5. **解密方法**
 
 ```java
@@ -298,7 +299,7 @@ public String decrypt(String ciphertext, String password, String privateKey) thr
 }
 ```
 
-    - 此方法同样实现了 `IEncryptor` 接口中的解密功能。由于 BCrypt 是一种不可逆的加密算法，因此该方法直接返回输入的密文 `ciphertext`，表示无法解密回原文。
+- 此方法同样实现了 `IEncryptor` 接口中的解密功能。由于 BCrypt 是一种不可逆的加密算法，因此该方法直接返回输入的密文 `ciphertext`，表示无法解密回原文。
 
 #### DataPermissionMapper.java——数据权限 Mapper 基类
 ```java
@@ -343,9 +344,9 @@ public interface DataPermissionMapper<T> extends BaseMapper<T> {
 List<T> selectList(@Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
 ```
 
-    - 使用 `@Override` 注解表示重写了 `BaseMapper` 中的方法。
-    - 使用 `@DataPermission` 注解，表明该方法对于数据权限的控制。
-    - 方法参数 `queryWrapper` 用于封装查询条件，返回类型为 `List<T>`，表示满足条件的所有记录。
+- 使用 `@Override` 注解表示重写了 `BaseMapper` 中的方法。
+- 使用 `@DataPermission` 注解，表明该方法对于数据权限的控制。
+- 方法参数 `queryWrapper` 用于封装查询条件，返回类型为 `List<T>`，表示满足条件的所有记录。
 3. **方法定义（分页查询）**：
 
 ```java
@@ -354,9 +355,9 @@ List<T> selectList(@Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
 List<T> selectList(IPage<T> page, @Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
 ```
 
-    - 同样使用 `@Override` 和 `@DataPermission` 注解。
-    - `IPage<T> page` 参数用于定义分页查询条件。
-    - `queryWrapper` 用于封装查询条件，返回满足条件的记录（带分页）。
+- 同样使用 `@Override` 和 `@DataPermission` 注解。
+- `IPage<T> page` 参数用于定义分页查询条件。
+- `queryWrapper` 用于封装查询条件，返回满足条件的记录（带分页）。
 
 #### DefaultDataPermissionUserContextProvider.java——数据权限用户上下文提供者
 ```java
@@ -389,7 +390,7 @@ public class DefaultDataPermissionUserContextProvider implements DataPermissionU
 public class DefaultDataPermissionUserContextProvider implements DataPermissionUserContextProvider {
 ```
 
-    - 这里定义了一个公共类 `DefaultDataPermissionUserContextProvider`，并实现了 `DataPermissionUserContextProvider` 接口。这表明该类必须实现接口中定义的方法。
+- 这里定义了一个公共类 `DefaultDataPermissionUserContextProvider`，并实现了 `DataPermissionUserContextProvider` 接口。这表明该类必须实现接口中定义的方法。
 2. **isFilter 方法**
 
 ```java
@@ -400,9 +401,9 @@ public boolean isFilter() {
 }
 ```
 
-    - `isFilter` 方法的返回值用于指示当前用户是否需要过滤数据。
-    - `LoginHelper.getLoginUser()` 是一个静态方法调用，它从登录状态中获取当前用户（`LoginUser` 对象）。
-    - `loginUser.isAdmin()` 检查当前用户是否是管理员，如果不是，则返回 `true`，表示需要过滤数据。
+- `isFilter` 方法的返回值用于指示当前用户是否需要过滤数据。
+- `LoginHelper.getLoginUser()` 是一个静态方法调用，它从登录状态中获取当前用户（`LoginUser` 对象）。
+- `loginUser.isAdmin()` 检查当前用户是否是管理员，如果不是，则返回 `true`，表示需要过滤数据。
 3. **getUserContext 方法**
 
 ```java
@@ -412,8 +413,8 @@ public UserContext getUserContext() {
     UserContext userContext = new UserContext();
 ```
 
-    - `getUserContext` 方法用于创建并返回 `UserContext` 对象，该对象包含当前用户的上下文信息。
-    - 同样使用 `LoginHelper.getLoginUser()` 获取当前用户信息。
+- `getUserContext` 方法用于创建并返回 `UserContext` 对象，该对象包含当前用户的上下文信息。
+- 同样使用 `LoginHelper.getLoginUser()` 获取当前用户信息。
 4. **设置用户 ID 和部门 ID**
 
 ```java
@@ -421,7 +422,7 @@ userContext.setUserId(Convert.toStr(loginUser.getId()));
 userContext.setDeptId(Convert.toStr(loginUser.getDeptId()));
 ```
 
-    - 使用 `Convert.toStr()` 将当前用户的 ID 和部门 ID 转换为字符串，并分别设置到 `userContext` 对象中。
+- 使用 `Convert.toStr()` 将当前用户的 ID 和部门 ID 转换为字符串，并分别设置到 `userContext` 对象中。
 5. **设置用户角色**
 
 ```java
@@ -431,9 +432,9 @@ userContext.setRoles(loginUser.getRoles()
     .collect(Collectors.toSet()));
 ```
 
-    - 获取当前用户的角色，通过流（Stream）处理这些角色。
-    - 对于每个角色 `r`，创建一个 `RoleContext` 对象，并将角色的 ID 和数据范围转换为相应的值。这里使用 `DataScope.valueOf(r.getDataScope().name())` 将角色的数据范围转换为 `DataScope` 枚举。
-    - 最后，将所有的角色集合变为一个 `Set` 并设置到 `userContext` 中。
+- 获取当前用户的角色，通过流（Stream）处理这些角色。
+- 对于每个角色 `r`，创建一个 `RoleContext` 对象，并将角色的 ID 和数据范围转换为相应的值。这里使用 `DataScope.valueOf(r.getDataScope().name())` 将角色的数据范围转换为 `DataScope` 枚举。
+- 最后，将所有的角色集合变为一个 `Set` 并设置到 `userContext` 中。
 6. **返回用户上下文**
 
 ```java
@@ -441,7 +442,7 @@ return userContext;
 }
 ```
 
-    - 返回构建好的 `userContext` 对象，包含了用户 ID、部门 ID 和角色信息。
+- 返回构建好的 `userContext` 对象，包含了用户 ID、部门 ID 和角色信息。
 
 ##### `userContext` 对象如下：
 ```java
@@ -660,7 +661,7 @@ public class MyBatisPlusMetaObjectHandler implements MetaObjectHandler {
 public class MyBatisPlusMetaObjectHandler implements MetaObjectHandler {
 ```
 
-    - 该类实现了 `MetaObjectHandler` 接口，用于在 MyBatis-Plus 中处理元对象，进行插入和更新时的自动填充操作。
+- 该类实现了 `MetaObjectHandler` 接口，用于在 MyBatis-Plus 中处理元对象，进行插入和更新时的自动填充操作。
 2. **字段定义**
 
 ```java
@@ -670,7 +671,7 @@ private static final String UPDATE_USER = "updateUser";
 private static final String UPDATE_TIME = "updateTime";
 ```
 
-    - 定义了一些静态常量，用于表示创建人、创建时间、修改人和修改时间的字段名称。这些常量在后续的自动填充操作中会被使用。
+- 定义了一些静态常量，用于表示创建人、创建时间、修改人和修改时间的字段名称。这些常量在后续的自动填充操作中会被使用。
 3. **插入数据时填充方法**
 
 ```java
@@ -678,7 +679,7 @@ private static final String UPDATE_TIME = "updateTime";
 public void insertFill(MetaObject metaObject) {
 ```
 
-    - 重写 `insertFill` 方法，在插入数据时被调用，用于自动填充创建人和创建时间。
+- 重写 `insertFill` 方法，在插入数据时被调用，用于自动填充创建人和创建时间。
 
 ```java
 if (null == metaObject) {
@@ -686,34 +687,34 @@ if (null == metaObject) {
 }
 ```
 
-    - 首先检查 `metaObject` 是否为 `null`，如果是则返回，不执行后续操作。
+- 首先检查 `metaObject` 是否为 `null`，如果是则返回，不执行后续操作。
 
 ```java
 Long createUser = ExceptionUtils.exToNull(LoginHelper::getUserId);//Java 8 引入的一种方法引用的写法
 LocalDateTime createTime = LocalDateTime.now();
 ```
 
-    - 获取当前用户的 ID（创建用户）和当前时间（创建时间）。
+- 获取当前用户的 ID（创建用户）和当前时间（创建时间）。
 
 ```java
 if (metaObject.getOriginalObject() instanceof BaseDO baseDO) {
 ```
 
-    - 判断 `metaObject` 的原始对象是否是 `BaseDO` 的实例，如果是，则使用 `BaseDO` 中的方法进行属性填充。
+- 判断 `metaObject` 的原始对象是否是 `BaseDO` 的实例，如果是，则使用 `BaseDO` 中的方法进行属性填充。
 
 ```java
 baseDO.setCreateUser(ObjectUtil.defaultIfNull(baseDO.getCreateUser(), createUser));
 baseDO.setCreateTime(ObjectUtil.defaultIfNull(baseDO.getCreateTime(), createTime));
 ```
 
-    - 如果 `BaseDO` 对象的创建用户或创建时间为 `null`，则填充对应的值。
+- 如果 `BaseDO` 对象的创建用户或创建时间为 `null`，则填充对应的值。
 
 ```java
 this.fillFieldValue(metaObject, CREATE_USER, createUser, false);
 this.fillFieldValue(metaObject, CREATE_TIME, createTime, false);
 ```
 
-    - 如果原始对象不是 `BaseDO` 的实例，则通过 `fillFieldValue` 方法填充这些字段。
+- 如果原始对象不是 `BaseDO` 的实例，则通过 `fillFieldValue` 方法填充这些字段。
 4. **修改数据时填充方法**
 
 ```java
@@ -721,59 +722,59 @@ this.fillFieldValue(metaObject, CREATE_TIME, createTime, false);
 public void updateFill(MetaObject metaObject) {
 ```
 
-    - 重写 `updateFill` 方法，在更新数据时被调用，用于自动填充修改人和修改时间。
+- 重写 `updateFill` 方法，在更新数据时被调用，用于自动填充修改人和修改时间。
 
 ```java
 Long updateUser = LoginHelper.getUserId();
 LocalDateTime updateTime = LocalDateTime.now();
 ```
 
-    - 获取当前用户的 ID（修改用户）和当前时间（修改时间）。
+- 获取当前用户的 ID（修改用户）和当前时间（修改时间）。
 
 ```java
 if (metaObject.getOriginalObject() instanceof BaseDO baseDO) {
 ```
 
-    - 判断 `metaObject` 的原始对象是否是 `BaseDO` 的实例，进行相应的属性填充。
+- 判断 `metaObject` 的原始对象是否是 `BaseDO` 的实例，进行相应的属性填充。
 
 ```java
 baseDO.setUpdateUser(updateUser);
 baseDO.setUpdateTime(updateTime);
 ```
 
-    - 直接设置 `updateUser` 和 `updateTime`。
+- 直接设置 `updateUser` 和 `updateTime`。
 
 ```java
 this.fillFieldValue(metaObject, UPDATE_USER, updateUser, true);
 this.fillFieldValue(metaObject, UPDATE_TIME, updateTime, true);
 ```
 
-    - 如果原始对象不是 `BaseDO` 的实例，则通过 `fillFieldValue` 方法填充这些字段。
+- 如果原始对象不是 `BaseDO` 的实例，则通过 `fillFieldValue` 方法填充这些字段。
 5. **填充字段值的方法**
 
 ```java
 private void fillFieldValue(MetaObject metaObject, String fieldName, Object fillFieldValue, boolean isOverride) {
 ```
 
-    - 定义了一个私有方法 `fillFieldValue`，用于填充指定字段的值。
+- 定义了一个私有方法 `fillFieldValue`，用于填充指定字段的值。
 
 ```java
 if (metaObject.hasSetter(fieldName)) {
 ```
 
-    - 检查 `metaObject` 是否有对应字段名的设置方法。
+- 检查 `metaObject` 是否有对应字段名的设置方法。
 
 ```java
 Object fieldValue = metaObject.getValue(fieldName);
 ```
 
-    - 获取当前字段的值，以便进行条件判断。
+- 获取当前字段的值，以便进行条件判断。
 
 ```java
 setFieldValByName(fieldName, null != fieldValue && !isOverride ? fieldValue : fillFieldValue, metaObject);
 ```
 
-    - 如果 `fieldValue` 不为 `null` 且 `isOverride` 为 `false`，则保留现有值，否则使用填充值。
+- 如果 `fieldValue` 不为 `null` 且 `isOverride` 为 `false`，则保留现有值，否则使用填充值。
 
 ### common/config/properties 
 #### CaptchaProperties.java——验证码配置属性
@@ -888,7 +889,7 @@ public class WebSocketClientServiceImpl implements WebSocketClientService {
 public class WebSocketClientServiceImpl implements WebSocketClientService {
 ```
 
-    - 该类名为 `WebSocketClientServiceImpl`，并且实现了 `WebSocketClientService` 接口。这意味着它需要提供接口中定义的方法的实现。
+- 该类名为 `WebSocketClientServiceImpl`，并且实现了 `WebSocketClientService` 接口。这意味着它需要提供接口中定义的方法的实现。
 3. **方法重写**:
 
 ```java
@@ -896,35 +897,35 @@ public class WebSocketClientServiceImpl implements WebSocketClientService {
 public String getClientId(ServletServerHttpRequest request) {
 ```
 
-    - `@Override` 注解表示这个方法是在实现接口时重写的方法。该方法接受一个 `ServletServerHttpRequest` 类型的参数，并返回一个 `String` 类型的客户端 ID。
+- `@Override` 注解表示这个方法是在实现接口时重写的方法。该方法接受一个 `ServletServerHttpRequest` 类型的参数，并返回一个 `String` 类型的客户端 ID。
 4. **获取 Servlet 请求**:
 
 ```java
 HttpServletRequest servletRequest = request.getServletRequest();
 ```
 
-    - 这里通过调用 `request.getServletRequest()` 方法将 `ServletServerHttpRequest` 转换为标准的 `HttpServletRequest` 对象，以便使用请求中的参数。
+- 这里通过调用 `request.getServletRequest()` 方法将 `ServletServerHttpRequest` 转换为标准的 `HttpServletRequest` 对象，以便使用请求中的参数。
 5. **提取 Token**:
 
 ```java
 String token = servletRequest.getParameter("token");
 ```
 
-    - 使用 `getParameter("token")` 方法从 HTTP 请求中提取名为 `token` 的参数。这个 Token 可能用于身份验证或标识当前用户。
+- 使用 `getParameter("token")` 方法从 HTTP 请求中提取名为 `token` 的参数。这个 Token 可能用于身份验证或标识当前用户。
 6. **获取登录用户信息**:
 
 ```java
 LoginUser loginUser = LoginHelper.getLoginUser(token);
 ```
 
-    - 调用 `LoginHelper.getLoginUser(token)` 方法，根据提取到的 Token 获取当前登录用户的信息。`LoginUser` 可能是一个包含用户详细信息的模型类。
+- 调用 `LoginHelper.getLoginUser(token)` 方法，根据提取到的 Token 获取当前登录用户的信息。`LoginUser` 可能是一个包含用户详细信息的模型类。
 7. **返回用户 Token**:
 
 ```java
 return loginUser.getToken();
 ```
 
-    - 最后，返回 `loginUser` 对象中的 Token，此 Token 可能用于 WebSocket 连接的身份验证。
+- 最后，返回 `loginUser` 对象中的 Token，此 Token 可能用于 WebSocket 连接的身份验证。
 
 总结：
 
@@ -1344,9 +1345,9 @@ public class LoginUser implements Serializable {
 public class LoginUser implements Serializable {
 ```
 
-    - `@Data`：这是Lombok库提供的注解，用于自动生成常用的方法，比如getter、setter、toString、hashCode和equals等，提高代码的简洁性。
-    - `@NoArgsConstructor`：也是Lombok的注解，生成一个无参构造函数。
-    - `implements Serializable`：表示该类可以被序列化，方便在网络传输或持久化存储。
+- `@Data`：这是Lombok库提供的注解，用于自动生成常用的方法，比如getter、setter、toString、hashCode和equals等，提高代码的简洁性。
+- `@NoArgsConstructor`：也是Lombok的注解，生成一个无参构造函数。
+- `implements Serializable`：表示该类可以被序列化，方便在网络传输或持久化存储。
 2. **序列化标识**
 
 ```java
@@ -1354,7 +1355,7 @@ public class LoginUser implements Serializable {
 private static final long serialVersionUID = 1L;
 ```
 
-    - `@Serial`：用于标识序列化的版本控制。`serialVersionUID`是用来验证序列化的对象版本。
+- `@Serial`：用于标识序列化的版本控制。`serialVersionUID`是用来验证序列化的对象版本。
 3. **字段定义**
 
 ```java
@@ -1376,7 +1377,7 @@ private Integer passwordExpirationDays;
 
 CopyInsert
 
-    - 定义了多个属性，主要用于存储用户的基本信息及其登录相关的信息。
+- 定义了多个属性，主要用于存储用户的基本信息及其登录相关的信息。
     - `Long id`：用户的唯一标识符。
     - `String username`：用户的名称。
     - `Long deptId`：用户所属部门的ID。
@@ -1401,7 +1402,7 @@ public LoginUser(Set<String> permissions, Set<RoleDTO> roles, Integer passwordEx
 
 CopyInsert
 
-    - 这个构造函数用于创建 `LoginUser` 对象，并初始化用户的权限、角色和密码有效期。
+- 这个构造函数用于创建 `LoginUser` 对象，并初始化用户的权限、角色和密码有效期。
 5. **setter方法**
 
 ```java
@@ -1413,7 +1414,7 @@ public void setRoles(Set<RoleDTO> roles) {
 
 CopyInsert
 
-    - 这个方法不仅设置角色集合，还根据角色集合提取角色编码并存储到 `roleCodes` 属性中。
+- 这个方法不仅设置角色集合，还根据角色集合提取角色编码并存储到 `roleCodes` 属性中。
 6. **管理员判断方法**
 
 ```java
@@ -1427,9 +1428,9 @@ public boolean isAdmin() {
 
 
 
-    - 这个方法检查用户是否是管理员，通过判断角色编码集合是否包含管理员角色的编码。
+- 这个方法检查用户是否是管理员，通过判断角色编码集合是否包含管理员角色的编码。
 7. **密码过期判断方法**
-    - 这个方法用于判断密码是否过期。它会检查权限有效期，判断用户是否有最后修改密码的时间，并基于这些信息返回是否过期。
+- 这个方法用于判断密码是否过期。它会检查权限有效期，判断用户是否有最后修改密码的时间，并基于这些信息返回是否过期。
 
 ```java
 public boolean isPasswordExpired() {
@@ -2263,8 +2264,8 @@ public class SaTokenConfiguration {
 @RequiredArgsConstructor
 ```
 
-    - `@Configuration`：标识该类是一个Spring配置类，里面的方法会被Spring容器管理，并用于创建Spring Bean。
-    - `@RequiredArgsConstructor`：这会为类中的所有`final`字段生成一个构造方法，所有的`final`字段都会在构造时被注入，从而简化了手动构造和注入的过程。
+- `@Configuration`：标识该类是一个Spring配置类，里面的方法会被Spring容器管理，并用于创建Spring Bean。
+- `@RequiredArgsConstructor`：这会为类中的所有`final`字段生成一个构造方法，所有的`final`字段都会在构造时被注入，从而简化了手动构造和注入的过程。
 2. **字段定义**：
 
 ```java
@@ -2272,8 +2273,8 @@ private final SaTokenExtensionProperties properties;
 private final LoginPasswordProperties loginPasswordProperties;
 ```
 
-    - `properties`：用于配置Sa-Token的扩展属性。
-    - `loginPasswordProperties`：用于处理登录和密码相关的配置。
+- `properties`：用于配置Sa-Token的扩展属性。
+- `loginPasswordProperties`：用于处理登录和密码相关的配置。
 3. **Bean配置 - 权限认证**：
 
 ```java
@@ -2283,8 +2284,8 @@ public StpInterface stpInterface() {
 }
 ```
 
-    - `@Bean`：表明该方法将返回一个Spring管理的Bean。
-    - `stpInterface()`：该方法返回一个实现权限认证的`StpInterface`接口的实例`SaTokenPermissionImpl`。这个接口通常用于定义用户的权限校验逻辑。
+- `@Bean`：表明该方法将返回一个Spring管理的Bean。
+- `stpInterface()`：该方法返回一个实现权限认证的`StpInterface`接口的实例`SaTokenPermissionImpl`。这个接口通常用于定义用户的权限校验逻辑。
 4. **Bean配置 - 拦截器**：
 
 ```java
@@ -2302,13 +2303,13 @@ public SaInterceptor saInterceptor() {
 }
 ```
 
-    - `saInterceptor()`：该方法返回一个`SaInterceptor`的实例，用于处理请求的拦截和权限验证。
-    - `SaRouter.match(StringConstants.PATH_PATTERN)`：用于匹配请求路径是否符合定义的模式。
-    - `notMatch(properties.getSecurity().getExcludes())`：定义不需要进行拦截的路径。
-    - `check(r -> {...})`：检查用户的权限和状态。
-    - `LoginUser loginUser = LoginHelper.getLoginUser();`：获取当前登录的用户信息。
-    - `if (SaRouter.isMatchCurrURI(loginPasswordProperties.getExcludes())) { return; }`：如果当前URI匹配排除列表，则跳过检查。
-    - `CheckUtils.throwIf(loginUser.isPasswordExpired(), "密码已过期，请修改密码");`：检查用户的密码是否过期，如果过期则抛出异常，提示用户修改密码。
+- `saInterceptor()`：该方法返回一个`SaInterceptor`的实例，用于处理请求的拦截和权限验证。
+- `SaRouter.match(StringConstants.PATH_PATTERN)`：用于匹配请求路径是否符合定义的模式。
+- `notMatch(properties.getSecurity().getExcludes())`：定义不需要进行拦截的路径。
+- `check(r -> {...})`：检查用户的权限和状态。
+- `LoginUser loginUser = LoginHelper.getLoginUser();`：获取当前登录的用户信息。
+- `if (SaRouter.isMatchCurrURI(loginPasswordProperties.getExcludes())) { return; }`：如果当前URI匹配排除列表，则跳过检查。
+- `CheckUtils.throwIf(loginUser.isPasswordExpired(), "密码已过期，请修改密码");`：检查用户的密码是否过期，如果过期则抛出异常，提示用户修改密码。
 
 ##### 总结
 这段代码的主要功能是配置Sa-Token的权限认证和拦截器。在权限认证方面，它定义了一个`StpInterface`的实现，用于处理用户的权限验证。在拦截器方面，它通过自定义的拦截器对请求进行拦截，检查用户的登录状态和密码是否过期，确保只有满足条件的请求才能继续往下执行。这样可以提高系统的安全性，确保用户在访问系统资源时具备有效的权限。
@@ -2508,7 +2509,7 @@ public LoginResp accountLogin(@Validated @RequestBody AccountLoginReq loginReq, 
 }
 ```
 
-    - 该方法处理用户通过账号和密码登录的请求。首先会验证验证码，接着解密用户密码，然后通过 `loginService` 进行登录，最后返回一个包含 token 的响应。
+- 该方法处理用户通过账号和密码登录的请求。首先会验证验证码，接着解密用户密码，然后通过 `loginService` 进行登录，最后返回一个包含 token 的响应。
 5. **手机号登录方法**：
 
 ```java
@@ -2529,7 +2530,7 @@ public LoginResp phoneLogin(@Validated @RequestBody PhoneLoginReq loginReq) {
 }
 ```
 
-    - 类似于账号登录，手机号登录使用手机号和验证码进行用户身份验证，流程相似。
+- 类似于账号登录，手机号登录使用手机号和验证码进行用户身份验证，流程相似。
 6. **邮箱登录方法**：
 
 ```java
@@ -2550,7 +2551,7 @@ public LoginResp emailLogin(@Validated @RequestBody EmailLoginReq loginReq) {
 }
 ```
 
-    - 邮箱登录的流程与手机号登录类似，通过邮箱和验证码进行身份验证。
+- 邮箱登录的流程与手机号登录类似，通过邮箱和验证码进行身份验证。
 7. **用户退出方法**：
 
 ```java
@@ -2563,7 +2564,7 @@ public Object logout() {
 }
 ```
 
-    - 该方法用于用户的注销功能。调用 `StpUtil` 进行注销，并返回当前登录的用户 ID。
+- 该方法用于用户的注销功能。调用 `StpUtil` 进行注销，并返回当前登录的用户 ID。
 8. **获取用户信息**：
 
 ```java
@@ -2581,7 +2582,7 @@ public UserInfoResp getUserInfo() {
 }
 ```
 
-    - 用于获取当前登录用户的详细信息，包括权限、角色等。
+- 用于获取当前登录用户的详细信息，包括权限、角色等。
 9. **获取路由信息**：
 
 ```java
@@ -2593,7 +2594,7 @@ public List<RouteResp> listRoute() {
 }
 ```
 
-    - 返回登录用户的路由信息，用于前端页面的路由管理。
+- 返回登录用户的路由信息，用于前端页面的路由管理。
 
 #### SocialAuthController.java——三方账号认证api
 ```java
@@ -2654,7 +2655,6 @@ public class SocialAuthController {
 public class SocialAuthController {
 ```
 
-CopyInsert
 
 + `@Log(module = "登录")`：用于记录日志的注解，可以用于跟踪和监控登录模块的操作。
 + `@Tag(name = "三方账号认证 API")`：OpenAPI注解，定义API的标签，用于生成API文档。
@@ -2669,7 +2669,6 @@ private final LoginService loginService;
 private final AuthRequestFactory authRequestFactory;
 ```
 
-CopyInsert
 
 + `loginService`：处理用户登录逻辑的服务。
 + `authRequestFactory`：用于创建不同第三方认证请求的工厂类。
@@ -2686,8 +2685,6 @@ public SocialAuthAuthorizeResp authorize(@PathVariable String source) {
         .build();
 }
 ```
-
-CopyInsert
 
 + `@Operation`和`@Parameter`：用于OpenAPI文档的描述。
 + `@GetMapping("/{source}")`：处理HTTP GET请求，可以传入第三方平台的标识（如“gitee”）。
@@ -2712,8 +2709,6 @@ public LoginResp login(@PathVariable String source, @RequestBody AuthCallback ca
     return LoginResp.builder().token(token).build();
 }
 ```
-
-CopyInsert
 
 + `@PostMapping("/{source}")`：处理HTTP POST请求。
 + `login`方法：处理第三方用户的登录逻辑。
@@ -2887,7 +2882,6 @@ public R getSmsCaptcha(@NotBlank(message = "手机号不能为空")
                        CaptchaVO captchaReq) {
 ```
 
-DiffCopyInsert
 
 + `@Operation`: 该注解用于描述 OpenAPI 文档中的操作。此处表示该方法的功能是 "获取短信验证码"。
 + `@GetMapping("/sms")`: 映射 GET 请求到 `/captcha/sms` 路径。
@@ -2902,7 +2896,6 @@ ResponseModel verificationRes = behaviorCaptchaService.verification(captchaReq);
 ValidationUtils.throwIfNotEqual(verificationRes.getRepCode(), RepCodeEnum.SUCCESS.getCode(), verificationRes.getRepMsg());
 ```
 
-DiffCopyInsert
 
 + 首先调用 `behaviorCaptchaService.verification` 方法来校验用户提供的行为验证码。
 + 使用 `ValidationUtils.throwIfNotEqual` 方法检查 `verificationRes` 的返回代码，若不等于预期的成功代码，则抛出异常并返回对应的错误信息。
@@ -2914,7 +2907,6 @@ CaptchaProperties.CaptchaSms captchaSms = captchaProperties.getSms();
 String captcha = RandomUtil.randomNumbers(captchaSms.getLength());
 ```
 
-DiffCopyInsert
 
 + 从 `captchaProperties` 获取短信验证码相关的配置。
 + 使用 `RandomUtil.randomNumbers` 方法生成一个指定长度的随机数字，作为短信验证码。
@@ -2930,7 +2922,6 @@ SmsResponse smsResponse = smsBlend.sendMessage(phone, captchaSms.getTemplateId()
 CheckUtils.throwIf(!smsResponse.isSuccess(), "验证码发送失败");
 ```
 
-DiffCopyInsert
 
 + 获取验证码的有效期（以分钟为单位）。
 + 使用 `SmsFactory` 根据供应商信息获取 `SmsBlend` 实例，以便发送短信。
@@ -2945,7 +2936,7 @@ String captchaKey = CacheConstants.CAPTCHA_KEY_PREFIX + phone;
 RedisUtils.set(captchaKey, captcha, Duration.ofMinutes(expirationInMinutes));
 ```
 
-DiffCopyInsert
+
 
 + 生成存储验证码的 Redis 键，通常会使用手机号作为关键标识。
 + 将生成的验证码和过期时间存储在 Redis 中，以便后续进行验证。
@@ -2955,7 +2946,7 @@ DiffCopyInsert
 return R.ok("发送成功，验证码有效期 %s 分钟".formatted(expirationInMinutes));
 ```
 
-DiffCopyInsert
+
 
 + 返回一个成功的响应，包含验证码的有效时间。
 
