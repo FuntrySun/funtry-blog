@@ -3,19 +3,22 @@
 layout: home
 
 hero:
-  name: "趣尝"
-  text: "FunTry"
-  tagline: 趣尝是一个对自己学习经验的文档分享博客,我想尽可能的介绍一些自己学习到的知识，希望对大家有用。
+  name: "FunTry-Blog "
+  text: "趣尝"
+  tagline: 趣尝，当然是要勇敢去尝试啦~不然等着变咸🐟？
+  image:
+    src: ./Eggs.svg
+    alt: VitePress
   actions:
     - theme: brand
-      text: 大哥请进！
+      text: 冒险者😎
       link: /pages/introduce
     - theme: brand
-      text: GitHub
-      link: /api-examples 
+      text: GitHub🕵️‍♀️
+      link: 'https://github.com/FuntrySun/funtry-blog'
     - theme: alt
       text: 未来？我想当帅哥~
-      link: /vuepress-examples
+      link: /pages/about/about
 features:
   - title: 微服务架构相关
     icon: 

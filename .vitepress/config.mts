@@ -30,7 +30,7 @@ export default defineConfig({
           {text:'Mybatis',link:'/pages/mybatis'}
         ]},
       {text:'框架源码赏析',items:[
-          {text:'Continew-admin-java',link:'/pages/rootCode/continewadminjava'},
+          {text:'Continew-admin-java',link:'/pages/rootCode/continewadminjava/common/exception'},
           {text:'Continew-admin-ui',link:'/pages/springcloudalibaba'},
           {text:'SpringCloud Gateway',link:'/pages/springcloudgateway'},
           {text:'SpringCloud Sleuth',link:'/pages/springcloudsleuth'},
@@ -43,57 +43,57 @@ export default defineConfig({
       {
         text: '博客相关',
         items: [
-          { text: '涵盖的内容', link: '/pages/introduce' },
+          { text: '热门技术栈简介', link: '/pages/introduce' },
           { text: '我想表达...', link: '/pages/price' }
         ]
       },
-      {
-        text:'前置知识-后端(Java)',
-        link:'/pages/service',
-        items:[
-          {text:'Servlet',link:'/pages/pay'},
-          {text:'微服务',items:[
-              {text:'微服务',link:'/pages/pay'},
-              {text:'微服务',link:'/pages/transfer'},
-              {text:'微服务',link:'/pages/pay'}
-          ]},
-          {text:'分布式',items:[
-              {text:'分布式',link:'/pages/pay'},
-              {text:'分布式',link:'/pages/transfer'},
-              {text:'分布式',link:'/pages/pay'}
-          ]},
-          {text:'OAuth2',link:'/pages/frontKnowledge/backend/oauth2'},
-          {text:'单点登录',link:'/pages/transfer'},
-          {text:'',link:'/pages/pay'}
-        ]
-      },
-      {
-        text:'前置知识-前端(Vue3)',
-        link:'/pages/service',
-        items:[
-          {text:'商家端',link:'/pages/pay'},
-          {text:'企业端',link:'/pages/transfer'},
-          {text:'个人端',link:'/pages/pay'}
-        ]
-      },
-      {
-        text:'SpringBoot3',
-        link:'/pages/service',
-        items:[
-          {text:'商家端',link:'/pages/pay'},
-          {text:'企业端',link:'/pages/transfer'},
-          {text:'个人端',link:'/pages/pay'}
-        ]
-      },
-      {
-        text:'SpringCloudAlibaba',
-        link:'/pages/safe/safe',
-        items:[
-          {text:'商家端',link:'/pages/pay'},
-          {text:'企业端',link:'/pages/transfer'},
-          {text:'个人端',link:'/pages/pay'}
-        ]
-      },
+      // {
+      //   text:'前置知识-后端(Java)',
+      //   link:'/pages/service',
+      //   items:[
+      //     {text:'Servlet',link:'/pages/pay'},
+      //     {text:'微服务',items:[
+      //         {text:'微服务',link:'/pages/pay'},
+      //         {text:'微服务',link:'/pages/transfer'},
+      //         {text:'微服务',link:'/pages/pay'}
+      //     ]},
+      //     {text:'分布式',items:[
+      //         {text:'分布式',link:'/pages/pay'},
+      //         {text:'分布式',link:'/pages/transfer'},
+      //         {text:'分布式',link:'/pages/pay'}
+      //     ]},
+      //     {text:'OAuth2',link:'/pages/frontKnowledge/backend/oauth2'},
+      //     {text:'单点登录',link:'/pages/transfer'},
+      //     {text:'',link:'/pages/pay'}
+      //   ]
+      // },
+      // {
+      //   text:'前置知识-前端(Vue3)',
+      //   link:'/pages/service',
+      //   items:[
+      //     {text:'商家端',link:'/pages/pay'},
+      //     {text:'企业端',link:'/pages/transfer'},
+      //     {text:'个人端',link:'/pages/pay'}
+      //   ]
+      // },
+      // {
+      //   text:'SpringBoot3',
+      //   link:'/pages/service',
+      //   items:[
+      //     {text:'商家端',link:'/pages/pay'},
+      //     {text:'企业端',link:'/pages/transfer'},
+      //     {text:'个人端',link:'/pages/pay'}
+      //   ]
+      // },
+      // {
+      //   text:'SpringCloudAlibaba',
+      //   link:'/pages/safe/safe',
+      //   items:[
+      //     {text:'商家端',link:'/pages/pay'},
+      //     {text:'企业端',link:'/pages/transfer'},
+      //     {text:'个人端',link:'/pages/pay'}
+      //   ]
+      // },
       {
         text:'前后端框架源码赏析',
         link: '',

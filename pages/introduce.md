@@ -1,44 +1,102 @@
+# 技术栈介绍
+在这个博客中，我们将探索和分享多个技术栈，包括Vue3、Spring Boot和Spring Cloud。这些技术栈在现代软件开发中扮演着重要的角色，每个都有其独特的特点和用途。
+## Vue3 🌟
+Vue3是Vue.js的最新版本，是一个用于构建用户界面的渐进式JavaScript框架。它具有简洁的API、灵活的组件系统和强大的生态系统。Vue3引入了许多新特性和改进，如Composition API、Teleport、Fragments等，使得开发更加高效和灵活。
+```typescript
+<template>
+  <div>
+    <h1>{{ message }}</h1>
+    <button @click="updateMessage">Update Message</button>
+  </div>
+</template>
 
+<script setup lang="ts">
+import { ref } from 'vue';
 
+const message = ref('Hello, Vue3!');
 
-# 小蚁聚合支付平台介绍
+function updateMessage() {
+  message.value = 'Hello, Updated Vue3!';
+}
+</script>
 
-## 一、初衷
-###### 随着移动支付的普及，多种支付方式并存的现象日益明显，商家和消费者在面对多样化的支付需求时，常常感到不便。为了解决这一问题，我们创立了小蚁聚合支付平台，旨在为广大商家和消费者提供一站式支付解决方案，实现支付的便捷、高效和安全。
+```
+标签：#Vue3 #前端 #JavaScript
+## Spring Boot ⚡
+Spring Boot是一个基于Spring框架的开源Java-based框架，用于创建独立的、生产级别的基于Spring的应用程序。它简化了Spring应用程序的初始搭建过程和开发工作，使得开发者能够快速启动和运行应用程序。Spring Boot提供了一种快捷的方式来构建和配置Spring应用程序，包括自动配置、嵌入式服务器和安全性等。
+```java
+@SpringBootApplication
+public class MyApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(MyApplication.class, args);
+  }
+}
 
-> [!TIP]
-> 有助于用户更顺利达成目标的建议性信息。
-## 二、核心优势
-###### 小蚁聚合支付平台的核心优势有：
+```
+标签：#SpringBoot #后端 #Java #微服务
+## Spring Cloud ☁️
+Spring Cloud是一套基于Spring Boot的开源微服务框架，用于快速、简单地构建分布式系统中的一些常见模式（例如配置管理、服务发现、断路器、智能路由、微代理、控制总线、一次性令牌、全局锁、领导选举、分布式会话和集群状态）。Spring Cloud提供了许多工具和库，帮助开发者构建和部署基于云的应用程序。
+```java
+@SpringBootApplication
+@EnableConfigServer
+public class ConfigServerApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(ConfigServerApplication.class, args);
+  }
+}//使用了@EnableConfigServer注解来创建一个配置服务器。
+//Spring Cloud还提供了许多其他强大的特性和组件，如Eureka、Hystrix、Zuul等
 
-1. 安全：小蚁聚合支付平台采用了多重安全保障措施，包括`支付接口加密`、`用户信息加密`、`支付数据加密`、`支付结果安全存储`、`支付结果数据分析`等，确保用户的支付信息安全。
-2. 跨平台支付整合：小蚁聚合支付平台整合了微信支付、支付宝支付、银联支付等多种主流支付方式，帮助商家轻松接入和管理各类支付渠道。
-3. 提高交易效率：通过一个接口接入小蚁聚合支付，商家无需分别对接多个支付平台，大大简化了支付接入流程，提高了交易效率。
-4. 优化用户体验：消费者在购物时，可以根据个人喜好选择支付方式，无需下载多个支付APP，提升了支付体验。
-5. 数据分析与管理：小蚁聚合支付平台为商家提供交易数据统计和分析，帮助商家更好地了解经营状况，优化营销策略。
-6. 安全保障：我们重视用户资金安全，采用银行级加密技术，确保每一笔交易的安全可靠。
+```
+标签：#SpringCloud #微服务 #分布式系统 #云原生
 
-## 三、基本使用流程
+## Pinia 🛍️
+Pinia是一个轻量级的、符合Vue3 Composition API的状态管理库。它提供了Vue2和Vue3的状态管理解决方案，是Vuex的官方替代品。Pinia以其简单性、直观性和灵活性而受到开发者的喜爱。它允许你以最少的配置和代码来管理应用程序的状态。
+```javascript
+import { defineStore } from 'pinia';
 
-###### 商家入驻流程：
-（1）注册账号：商家在小蚁聚合支付官网注册账号，填写相关信息。
+export const useCounterStore = defineStore('counter', {
+  state: () => ({
+    count: 0,
+  }),
+  actions: {
+    increment() {
+      this.count++;
+    },
+  },
+});
 
-（2）提交资料：根据平台要求，提交营业执照、法人身份证等资质材料。
+```
+标签：#Pinia #状态管理 #Vue3
+## Axios 🌐
+Axios是一个基于Promise的HTTP客户端，用于浏览器和Node.js。它是一个强大的工具，用于处理HTTP请求，支持拦截请求和响应、转换请求数据和响应数据、取消请求、自动转换JSON数据等。Axios是现代JavaScript应用程序中处理API通信的流行选择。
+```javascript
+axios.get('https://api.example.com/data')
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
-（3）审核通过：平台审核商家资料，审核通过后，商家可进行下一步操作。
+```
+标签：#Axios #HTTP #API #客户端
+## TypeScript 🚀
+TypeScript是一种由微软开发的自由和开源的编程语言，它是JavaScript的一个超集，添加了静态类型选项。TypeScript扩展了JavaScript的语法，任何现有的JavaScript程序都是合法的TypeScript程序。TypeScript提供了类型检查和接口等特性，使得大型的前端项目更加易于维护和扩展。
+```typescript
+function greet(name: string): string {
+  return 'Hello, ' + name + '!';
+}
 
-###### 接入支付：
-（1）选择支付方式：商家根据需求选择接入微信支付、支付宝支付、银联支付等。
+const message = greet('TypeScript');
+console.log(message);
 
-（2）配置参数：根据平台提供的接入文档，配置相关支付参数。
-
-（3）测试联调：商家在测试环境下进行支付测试，确保支付流程无误。
-
-###### 正式使用：
-（1）上线运营：测试无误后，商家可将支付功能正式上线，开始接收消费者支付。
-
-（2）交易管理：商家可通过小蚁聚合支付后台查看交易订单、退款订单等，并进行相关操作。
-
-（3）数据分析：平台为商家提供交易数据统计和分析，助力商家优化经营策略。
-
-###### 小蚁聚合支付平台致力于为商家和消费者打造便捷、高效、安全的支付环境，助力我国移动支付产业发展。我们期待与您携手共创美好未来！
+```
+标签：#TypeScript #静态类型 #编程语言 #JavaScript
+## UnoCSS 🎨
+UnoCSS是一个即时原子CSS引擎，它基于Utility-First的CSS理念，提供了一种高效的方式来编写和优化CSS。UnoCSS通过自动生成原子CSS类，减少了手动编写CSS的需要，提高了开发效率和性能。它是现代前端开发中的一个热门选择，特别是在构建快速和响应式Web应用程序时。
+```css
+<div class="p-4 bg-blue-500 text-white rounded-lg shadow-md">
+  Hello, UnoCSS!
+</div>
+```
+标签：#UnoCSS #原子CSS #Utility-First #CSS
