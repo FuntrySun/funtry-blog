@@ -18,7 +18,8 @@ export default defineConfig({
     nav: [
       { text: '主页', link: '/' },
       { text: '前端', items: [
-          { text: 'pinia封装', link: '/pages/html' },
+          { text: 'pinia封装', link: '/pages/frontKnowledge/frontend/pinia' },
+          { text: 'vitepress构建发布', link: '/pages/frontKnowledge/frontend/vitepress' },
           { text: 'TypeScript', link: '/pages/typescript' },
           { text: 'Vue3.0', link: '/pages/vue3' },
           { text: 'VitePress', link: '/pages/vitepress' }
