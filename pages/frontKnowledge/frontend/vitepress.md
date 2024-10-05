@@ -5,10 +5,12 @@
 > [!TIP]
 >
 > 建议去查看官方文档的构建过程及初始化配置等
+> https://vitepress.dev/zh/guide/getting-started
 
 ## 发布
 
-* GitHub创建自己的仓库并将settings->pages->develpment... 改为actions
+* GitHub创建自己的仓库并将settings->pages->Build and deployment改为github actions
+  ![alt text](./images/imageaction.png)
 
 * 创建好仓库后加下来再源码的根目录当中建一个 ` .github/workflows/deploy.yml` 文件夹及文件
 
@@ -88,8 +90,10 @@
   >
   > 注意：一定要将自己项目的 ` .vitepress\config.ts` 文件的` base`配置项改为自己的仓库名
 
-* 将代码通过git提交到自己的仓库
+* 将代码通过git提交到自己的仓库[推荐idea或者ws]😁
 
-* 然后就可以等待仓库代码上方的` Actions`里面的提交加载完毕（圆圈变绿打勾）
+* 然后就可以等待仓库代码上方的` Actions`里面的提交加载完毕（圆圈变绿打勾）😼
+  ![alt text](./images/image.png)
 
-* 最后访问地址`https://[用户名].github.io/[仓库名]/`就可以看到自己发布的静态网站了
+* 最后访问地址`https://[用户名].github.io/[仓库名]/`就可以看到自己发布的静态网站了🧨🧨
+  ![alt text](./images/imageweb.png)
