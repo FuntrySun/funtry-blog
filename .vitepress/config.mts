@@ -17,15 +17,15 @@ export default defineConfig({
     //导航栏
     nav: [
       { text: '主页', link: '/' },
-      { text: '前端', items: [
+      { text: '热门技术栈', items: [
           { text: 'pinia封装', link: '/pages/frontKnowledge/frontend/pinia' },
-          { text: 'vitepress构建发布', link: '/pages/frontKnowledge/frontend/vitepress' },
-          { text: 'TypeScript', link: '/pages/typescript' },
+          { text: 'VitePress构建发布', link: '/pages/frontKnowledge/frontend/vitepress' },
+          { text: 'Git操作实践', link: '/pages/frontKnowledge/frontend/Git' },
           { text: 'Vue3.0', link: '/pages/vue3' },
           { text: 'VitePress', link: '/pages/vitepress' }
         ] },
-      {text:'后端',items:[
-          {text:'Java',link:'/pages/java'},
+      {text:'热门API',items:[
+          {text:'Java基础',link:'/pages/frontKnowledge/frontend/java'},
           {text:'Spring',link:'/pages/spring'},
           {text:'Spring Boot',link:'/pages/springboot'},
           {text:'Mybatis',link:'/pages/mybatis'}
@@ -48,26 +48,26 @@ export default defineConfig({
           { text: '我想表达...', link: '/pages/price' }
         ]
       },
-      // {
-      //   text:'前置知识-后端(Java)',
-      //   link:'/pages/service',
-      //   items:[
-      //     {text:'Servlet',link:'/pages/pay'},
-      //     {text:'微服务',items:[
-      //         {text:'微服务',link:'/pages/pay'},
-      //         {text:'微服务',link:'/pages/transfer'},
-      //         {text:'微服务',link:'/pages/pay'}
-      //     ]},
-      //     {text:'分布式',items:[
-      //         {text:'分布式',link:'/pages/pay'},
-      //         {text:'分布式',link:'/pages/transfer'},
-      //         {text:'分布式',link:'/pages/pay'}
-      //     ]},
-      //     {text:'OAuth2',link:'/pages/frontKnowledge/backend/oauth2'},
-      //     {text:'单点登录',link:'/pages/transfer'},
-      //     {text:'',link:'/pages/pay'}
-      //   ]
-      // },
+      {
+        text:'基础知识-后端(Java)',
+        link:'/pages/service',
+        items:[
+          {text:'Servlet',collapsed: true,link:'/pages/pay'},
+          {text:'微服务',collapsed: true,items:[
+              {text:'微服务',link:'/pages/pay'},
+              {text:'微服务',link:'/pages/transfer'},
+              {text:'微服务',link:'/pages/pay'}
+          ]},
+          {text:'分布式',collapsed: true,items:[
+              {text:'分布式',link:'/pages/pay'},
+              {text:'分布式',link:'/pages/transfer'},
+              {text:'分布式',link:'/pages/pay'}
+          ]},
+          {text:'OAuth2',link:'/pages/frontKnowledge/backend/oauth2'},
+          {text:'单点登录',link:'/pages/transfer'},
+          {text:'',link:'/pages/pay'}
+        ]
+      },
       // {
       //   text:'前置知识-前端(Vue3)',
       //   link:'/pages/service',
@@ -77,15 +77,15 @@ export default defineConfig({
       //     {text:'个人端',link:'/pages/pay'}
       //   ]
       // },
-      // {
-      //   text:'SpringBoot3',
-      //   link:'/pages/service',
-      //   items:[
-      //     {text:'商家端',link:'/pages/pay'},
-      //     {text:'企业端',link:'/pages/transfer'},
-      //     {text:'个人端',link:'/pages/pay'}
-      //   ]
-      // },
+      {
+        text:'SpringBoot3实战篇',
+        link:'/pages/service',
+        items:[
+          {text:'项目',link:'/pages/pay'},
+          {text:'企业端',link:'/pages/transfer'},
+          {text:'个人端',link:'/pages/pay'}
+        ]
+      },
       // {
       //   text:'SpringCloudAlibaba',
       //   link:'/pages/safe/safe',
