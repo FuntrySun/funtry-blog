@@ -154,8 +154,6 @@
      git pull myrepo master
      ```
 
-     
-
    - 如果你使用的是 `main` 分支，请替换 `master` 为 `main`。
 
 2. **解决冲突**：
@@ -171,8 +169,6 @@
      git commit -m "解决冲突"
      ```
 
-     
-
 4. **再次推送**：
 
    - 现在可以再次尝试推送：
@@ -181,7 +177,6 @@
      git push myrepo master
      ```
 
-     
 
 ### 方法二：强制推送（不推荐，谨慎使用）
 
@@ -189,11 +184,11 @@
 
 1. 强制推送
 
+   ：
+
    ```bash
    git push -f myrepo master
    ```
-
-   如果是main分支，把master 改为main
 
    - 注意：强制推送会覆盖远程仓库的内容，请务必谨慎使用。
 
@@ -204,27 +199,23 @@
    - 如果想避免影响到原有的内容，可以创建一个新的分支：
 
      ```bash
-     git checkout -b [新分支名]
+     git checkout -b new-branch
      ```
-
-     
 
 2. **推送到新分支**：
 
    - 将更改推送到新的分支：
 
      ```bash
-     git push myrepo [新分支名]
+     git push myrepo new-branch
      ```
-
-     
 
 3. **后续处理**：
 
    - 在远程仓库中，你可以创建一个合并请求（Pull Request）以请求将这个新分支合并到主分支。
 
 通过以上这些方法，你应该能够成功推送你的更改到远程仓库。根据实际情况选择合适的方法进行处理。
-<<<<<<< HEAD
+
 > [!NOTE]
 >
 > 项目拉取之后进行了更改，按照新仓库的推送流程出现了如下问题
@@ -340,9 +331,119 @@
 - 设置上游分支与远程分支的关联。
 
 遵循上述步骤应该能够解决 `src refspec main does not match any` 的问题，从而顺利进行代码的推送操作。
-=======
->>>>>>> b12f6ed4ce0d0498a526208d5912b1343cb61a16
 
-> [!IMPORTANT]
+> [!NOTE]
 >
-> 如果有其他遇到的git的问题欢迎提问（issue）或者在交流群里提问
+> 正常的项目推送时出现了以下问题：
+>
+> 1. **git push -u funtrysun  main**
+>    To https://github.com/FuntrySun/funtry-blog.git
+>     ! [rejected]        main -> main (non-fast-forward)
+>    error: failed to push some refs to 'https://github.com/FuntrySun/funtry-blog.git'
+>    hint: Updates were rejected because the tip of your current branch is behind
+>    hint: its remote counterpart. If you want to integrate the remote changes,
+>    hint: use 'git pull' before pushing again.
+>    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+错误信息 `! [rejected]        main -> main (non-fast-forward)` 表示你尝试将本地的 `main` 分支推送到远程仓库时被拒绝了。这是因为你当前的本地 `main` 分支落后于远程 `main` 分支，这被称为“非快进（non-fast-forward）”情况。
+
+### 具体含义：
+
+1. **非快进推送**：
+   - 在 Git 中，快进推送是指你可以直接将本地分支的更改添加到远程分支的末尾，而不需要进行合并。
+   - 当你在远程分支上有新的提交，而你的本地分支没有这些提交时，Git 会拒绝你的推送以避免覆盖远程仓库的历史。
+2. **错误提示的原因**：
+   - 本地分支的提交历史与远程分支的提交历史不一致。简单来说，你的本地分支“落后”于远程分支。
+
+### 解决方法：
+
+1. **拉取远程更改并合并**： 在推送之前，首先使用 `git pull` 命令将远程分支的更改拉取到你的本地分支，并合并这些更改：
+
+   ```bash
+   git pull origin main
+   ```
+
+   这条命令将会拉取远程 `main` 分支的更改，并将其与本地的 `main` 分支合并。
+
+2. **处理合并冲突（如果有）**： 如果在执行 `git pull` 时出现合并冲突，你需要手动解决这些冲突。Git 会告诉你哪些文件存在冲突，解决冲突后，再次提交更改：
+
+   ```bash
+   git add <conflicted-files>
+   git commit -m "Resolved merge conflicts"
+   ```
+
+3. **推送更改**： 一旦你完成了合并（并解决了任何潜在的冲突），你就可以再次尝试推送：
+
+   ```bash
+   git push origin main
+   ```
+
+### 其他选项：
+
+如果你确实想要覆盖远程分支（注意这会丢失远程分支上的修改），可以使用 `--force` 参数强制推送：
+
+```bash
+git push --force origin main
+```
+
+**警告**：使用 `--force` 推送会覆盖远程的提交历史，其他协作者的修改将会丢失。应谨慎使用这个选项，并确保你理解其潜在后果。
+
+### 总结：
+
+这个错误提示表明你的本地分支需要更新，以确保记录不会丢失。通常建议按步骤进行拉取和合并，以保持所有更改并确保代码的完整性。
+
+> [!NOTE]
+>
+> 错误如下：
+>
+> From https://github.com/FuntrySun/funtry-blog * branch            main       -> FETCH_HEAD Auto-merging pages/frontKnowledge/frontend/Git.md CONFLICT (add/add): Merge conflict in pages/frontKnowledge/frontend/Git.md Automatic merge failed; fix conflicts and then commit the result.
+
+您遇到的输出信息表明在进行 Git 拉取操作时发生了**合并冲突**。具体来说，该信息的含义如下：
+
+1. **拉取操作**：
+   - `From https://github.com/FuntrySun/funtry-blog` 表示从指定的远程仓库进行拉取操作。
+   - `* branch main -> FETCH_HEAD` 提示 Git 成功获取到了远程 `main` 分支的更新。
+2. **自动合并**：
+   - `Auto-merging pages/frontKnowledge/frontend/Git.md` 表示 Git 尝试自动合并文件 `Git.md`。
+3. **合并冲突**：
+   - `CONFLICT (add/add): Merge conflict in pages/frontKnowledge/frontend/Git.md` 说明在文件 `Git.md` 中存在合并冲突。由于该文件在本地和远程仓库中都被修改过，无法自动合并，Git 无法决定哪一部分内容应该保留，因此发生了冲突。
+4. **自动合并失败**：
+   - `Automatic merge failed; fix conflicts and then commit the result.` 显示自动合并失败，您需要手动解决冲突并提交结果。
+
+### 解决合并冲突的步骤：
+
+1. **查看冲突的文件**： 本例中发生冲突的文件是 `pages/frontKnowledge/frontend/Git.md`。您可以打开这个文件，您会看到冲突的标记，如下所示：
+
+   ```markdown
+   <<<<<<< HEAD
+   本地版本的内容
+   =======
+   远程版本的内容
+   >>>>>>> branch-name
+   ```
+
+   这里的 `HEAD` 代表您的本地更改，`branch-name` 代表远程分支上的更改。
+
+2. **手动解决冲突**： 您需要根据项目的需求手动编辑该文件，选择保留您想要的内容，并删除冲突标记。确保文件中只保留你希望最终存在的内容。
+
+3. **标记冲突已解决**： 一旦您解决了所有冲突并保存文件，您需要标记这些冲突已经解决。首先，使用 `git add` 命令将变更添加到暂存区：
+
+   ```bash
+   git add pages/frontKnowledge/frontend/Git.md
+   ```
+
+4. **完成合并并提交更改**： 之后，您可以提交合并结果：
+
+   ```bash
+   git commit -m "Resolved merge conflict in Git.md"
+   ```
+
+5. **推送更改**（可选）： 如果您想将变更推送到远程仓库，可以使用以下命令：
+
+   ```bash
+   git push origin main
+   ```
+
+### 总结：
+
+合并冲突是常见的 Git 操作过程，通常需要手动干预来决策最终保留哪些更改。通过仔细检查和解决冲突，您可以顺利完成代码整合。另外，确保在解决冲突时与团队成员沟通，确保最终结果符合项目需求。
