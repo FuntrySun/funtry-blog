@@ -224,6 +224,121 @@
    - 在远程仓库中，你可以创建一个合并请求（Pull Request）以请求将这个新分支合并到主分支。
 
 通过以上这些方法，你应该能够成功推送你的更改到远程仓库。根据实际情况选择合适的方法进行处理。
+> [!NOTE]
+>
+> 项目拉取之后进行了更改，按照新仓库的推送流程出现了如下问题
+>
+> 1. error: remote origin already exists.
+> 2. error: src refspec main does not match any error: failed to push some refs to 'https://github.com/FuntrySun/funtry-admin.git
+
+错误信息 `error: remote origin already exists.` 通常出现在使用 Git 时，表示你尝试添加一个远程仓库（remote repository）时，系统发现已经有一个名为 `origin` 的远程仓库存在。
+
+在 Git 中，`origin` 是默认的远程仓库名称，通常用来指向你克隆的那个仓库或最初设置的远程仓库。
+
+### 解决方法
+
+1. **查看现有的远程仓库**： 使用以下命令查看当前与本地仓库关联的远程仓库列表：
+
+   ```bash
+   git remote -v
+   ```
+
+   这将显示所有已添加的远程仓库及其对应的 URL。
+
+2. **修改现有的远程仓库 URL**： 如果你想修改已有的 `origin` 的 URL，可以使用以下命令：
+
+   ```bash
+   git remote set-url origin <new-url>
+   ```
+
+   将 `<new-url>` 替换为你想设置的新远程仓库地址。
+
+3. **删除现有的远程仓库**： 如果你确定不再需要当前的 `origin` 远程仓库，你可以删除它：
+
+   ```bash
+   git remote remove origin
+   ```
+
+   然后，你可以重新添加新的远程仓库：
+
+   ```bash
+   git remote add origin <new-url>
+   ```
+
+4. **添加一个不同名称的远程仓库**： 如果你希望保留现有的 `origin` 远程仓库，还可以选择使用不同的名称来添加新的远程仓库：
+
+   ```bash
+   git remote add <new-name> <new-url>
+   ```
+
+   将 `<new-name>` 替换为你选择的新的名称。
+
+### 示例
+
+假设你要将远程仓库 URL 设置为 `https://github.com/username/repo.git`，你可以选择修改或添加：
+
+- 修改：
+
+  ```bash
+  git remote set-url origin https://github.com/username/repo.git
+  ```
+
+- 或者删除再添加：
+
+  ```bash
+  git remote remove origin
+  git remote add origin https://github.com/username/repo.git
+  ```
+
+- 添加不同名称：
+
+  ```bash
+  git remote add upstream https://github.com/anotheruser/repo.git
+  ```
+
+通过以上方法，应该能够解决 `error: remote origin already exists.` 的问题。
+
+****
+
+错误信息 `error: src refspec main does not match any` 通常出现在使用 Git 提交和推送操作时。这个错误的主要原因是你尝试将当前分支推送到远程仓库的某个分支，但 Git 找不到相应的分支或没有任何提交可以推送。
+
+### 造成此错误的常见原因包括：
+
+1. **未进行任何提交**： 最常见的原因是你的本地仓库没有进行过任何提交。当你创建一个新仓库后，如果没有使用 `git commit` 命令提交代码，尝试推送时会报告这个错误。确保在推送之前至少进行一次提交，例如：
+
+   ```bash
+   git add .  # 添加文件
+   git commit -m "Initial commit"  # 创建提交
+   ```
+
+2. **分支名称不匹配**： 另一个可能的原因是你本地的分支名称与远程仓库的分支名称不一致。例如，你在本地的主分支可能是 `master`，而远程仓库的主分支是 `main`。如果你尝试推送到一个不存在的分支，就会出现该错误。你可以通过以下命令检查当前分支：
+
+   ```bash
+   git branch  # 查看本地所有分支
+   ```
+
+   如果你需要推送到 `main` 分支，可以将当前分支重命名为 `main`：
+
+   ```bash
+   git branch -m main  # 将当前分支重命名为 main
+   ```
+
+3. **未设置上游分支**： 如果你没有为本地分支设置远程追踪分支，尝试直接推送时也会遇到此错误。可以通过以下命令来设置上游分支：
+
+   ```bash
+   git push -u origin main  # 设置远程 origin 作为 main 分支的上游
+   ```
+
+4. **分支尚不存在于远程**： 如果你尝试将本地的分支推送到一个远程分支，但该分支尚不存在，并且没有任何提交可供推送，也会导致这个错误。在这种情况下，确保本地分支存在，并且有提交内容。
+
+### 解决此错误的方法：
+
+- 确保在推送之前已经进行至少一次提交。
+- 检查本地和远程分支名称是否一致，确保使用正确的名称。
+- 如果需要，将本地分支重命名为远程分支的名称。
+- 设置上游分支与远程分支的关联。
+
+遵循上述步骤应该能够解决 `src refspec main does not match any` 的问题，从而顺利进行代码的推送操作。
 
 > [!IMPORTANT]
 >
